@@ -37,14 +37,9 @@ root.render(
           },
           components: {
             Container: {
-              styles: {
-                root: {
-                  boxSizing: 'content-box',
-                },
-              },
               defaultProps: {
                 sizes: {
-                  md: 1116,
+                  md: 1148,
                 }
               }
             }
