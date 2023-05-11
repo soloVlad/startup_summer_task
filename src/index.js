@@ -44,6 +44,10 @@ root.render(
               }
             }
           },
+          other: {
+            cardRadius: rem(12),
+            cardPadding: rem(24),
+          }
         }}
       >
         <App />
