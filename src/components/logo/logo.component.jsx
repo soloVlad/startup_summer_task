@@ -3,15 +3,7 @@ import { Link } from "react-router-dom";
 
 import { ReactComponent as LogoIcon } from '../../assets/icons/logo.svg';
 
-const useStyles = createStyles((theme) => ({
-  logoText: {
-    letterSpacing: '-0.02em',
-    fontFamily: 'Poppins, sans-serif',
-  },
-  logoIcon: {
-    fill: theme.colors['bright-blue'][4],
-  }
-}));
+import useStyles from "./logo.styles";
 
 const Logo = ({ className }) => {
   const { classes } = useStyles();
