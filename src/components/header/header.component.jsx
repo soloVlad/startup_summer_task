@@ -7,7 +7,6 @@ import Logo from "../logo/logo.component";
 
 import useStyles from "./header.styles";
 
-
 const Header = () => {
   const { classes } = useStyles();
   const { pathname } = useLocation();

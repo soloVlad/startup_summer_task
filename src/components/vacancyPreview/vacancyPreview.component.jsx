@@ -1,5 +1,6 @@
 import { Center, Flex, Stack, Text, Title } from "@mantine/core";
 import Card from "../layout/card/card.component";
+import StarButton from "../starButton/starButton.component";
 
 import { ReactComponent as GeoIcon } from '../../assets/icons/geo.svg';
 import { ReactComponent as DotIcon } from '../../assets/icons/dot.svg';
@@ -11,12 +12,10 @@ const VacancyPreview = ({ vacancy }) => {
 
   return (
     <Card>
-      <Stack>
+      <Stack spacing='lg'>
         <Flex gap='lg' className={classes.titleWrapper}>
           <Title order={2} className={classes.profession}>{vacancy.profession}</Title>
-          <Center className={classes.starIconWrapper}>
-            <span>Star</span>
-          </Center>
+          <StarButton vacancyId={vacancy.id} />
         </Flex>
         <Flex gap='lg' className={classes.infoWrapper}>
           <Title order={3}>

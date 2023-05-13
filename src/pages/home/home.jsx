@@ -2,6 +2,7 @@ import VacancyPreview from "../../components/vacancyPreview/vacancyPreview.compo
 
 const vacancies = [
   {
+    id: 1,
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
@@ -16,6 +17,7 @@ const vacancies = [
     agreement: 'false',
   },
   {
+    id: 2,
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
@@ -30,6 +32,7 @@ const vacancies = [
     agreement: 'true',
   },
   {
+    id: 3,
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
