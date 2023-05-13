@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Center } from "@mantine/core";
+import { Center } from "@mantine/core";
 
 import { ReactComponent as StarIcon } from '../../assets/icons/star.svg';
 

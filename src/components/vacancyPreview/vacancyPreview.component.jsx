@@ -13,11 +13,11 @@ const VacancyPreview = ({ vacancy }) => {
   return (
     <Card>
       <Stack spacing='lg'>
-        <Flex gap='lg' className={classes.titleWrapper}>
+        <Flex gap='md' className={classes.titleWrapper}>
           <Title order={2} className={classes.profession}>{vacancy.profession}</Title>
           <StarButton vacancyId={vacancy.id} />
         </Flex>
-        <Flex gap='lg' className={classes.infoWrapper}>
+        <Flex gap='md' className={classes.infoWrapper}>
           <Title order={3}>
             {`${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}`}
           </Title>
@@ -26,7 +26,7 @@ const VacancyPreview = ({ vacancy }) => {
           </Center>
           <Text className={classes.typeOfWork}>{vacancy.type_of_work.title}</Text>
         </Flex>
-        <Flex gap='md' className={classes.geoWrapper}>
+        <Flex gap='sm' className={classes.geoWrapper}>
           <Center className={classes.geoIconWrapper}>
             <GeoIcon className={classes.geoIcon} />
           </Center>

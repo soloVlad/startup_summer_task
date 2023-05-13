@@ -7,8 +7,10 @@ const theme = {
     md: rem(14),
   },
   spacing: {
-    md: rem(8),
-    lg: rem(12),
+    sm: rem(8),
+    md: rem(12),
+    lg: rem(16),
+    xl: rem(20),
   },
   white: '#FFF',
   black: '#232134',

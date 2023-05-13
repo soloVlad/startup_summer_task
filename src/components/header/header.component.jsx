@@ -1,4 +1,4 @@
-import { Group, Anchor, rem, Flex, Container, createStyles, Paper } from "@mantine/core";
+import { Group, Anchor, Flex, Container, Paper } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 
 import LINKS from "../../constants/menuLinks";
