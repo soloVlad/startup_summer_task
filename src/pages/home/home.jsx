@@ -1,3 +1,4 @@
+import VacanciesList from "../../components/vacanciesList/vacanciesList.component";
 import VacancyPreview from "../../components/vacancyPreview/vacancyPreview.component";
 
 const vacancies = [
@@ -6,7 +7,7 @@ const vacancies = [
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
-      title: 'Minks',
+      title: 'Minsk',
     },
     type_of_work: {
       title: 'fulltime job',
@@ -21,7 +22,7 @@ const vacancies = [
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
-      title: 'Minks',
+      title: 'Minsk',
     },
     type_of_work: {
       title: 'fulltime job',
@@ -36,7 +37,7 @@ const vacancies = [
     profession: 'Junior JS developer',
     firm_name: 'Pyatorochka',
     town: {
-      title: 'Minks',
+      title: 'Minsk',
     },
     type_of_work: {
       title: 'fulltime job',
@@ -50,13 +51,7 @@ const vacancies = [
 
 const Home = () => {
   return (
-    <>
-      {
-        vacancies.map((vacancy, id) => (
-          <VacancyPreview key={id} vacancy={vacancy} />
-        ))
-      }
-    </>
+    <VacanciesList vacancies={vacancies} />
   );
 };
 
