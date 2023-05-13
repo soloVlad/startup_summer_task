@@ -21,6 +21,10 @@ root.render(
           fontSizes: {
             md: rem(14),
           },
+          spacing: {
+            md: rem(8),
+            lg: rem(12),
+          },
           white: '#FFF',
           black: '#232134',
           colors: {
@@ -32,7 +36,10 @@ root.render(
             fontFamily: 'Inter, sans-serif',
 
             sizes: {
-              h1: { fontSize: rem(24), lineHeight: rem(36) }
+              h1: { fontSize: rem(24), lineHeight: rem(36) },
+              h2: { fontSize: rem(20), lineHeight: rem(24) },
+              h3: { fontSize: rem(16), lineHeight: rem(20) },
+              h4: { fontWeight: 400, fontSize: rem(16), lineHeight: rem(19) },
             }
           },
           components: {
@@ -47,6 +54,7 @@ root.render(
           other: {
             cardRadius: rem(12),
             cardPadding: rem(24),
+            cardMaxWidth: rem(773),
           }
         }}
       >
