@@ -1,16 +1,18 @@
 import { Group, Anchor, rem, Flex, Container, createStyles, Paper } from "@mantine/core";
 import { Link, useLocation } from "react-router-dom";
 
+import ROUTES from "../../constants/routes";
+
 import Logo from "../logo/logo.component";
 
 const LINKS = [
   {
     name: 'Поиск Вакансий',
-    URL: '/'
+    URL: ROUTES.HOME,
   },
   {
     name: 'Избранное',
-    URL: '/fav'
+    URL: ROUTES.FAVORITES,
   }
 ];
 

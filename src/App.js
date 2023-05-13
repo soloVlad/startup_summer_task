@@ -2,19 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/header.component";
 import { Container, createStyles, rem } from "@mantine/core";
 
-import Card from "./components/layout/card/card";
+import ROUTES from "./constants/routes";
 
-const Base = () => {
-  return (
-    <Card>
-      Hello, world
-    </Card>
-  )
-}
+import Home from "./pages/home/home";
 
 const useStyles = createStyles((theme) => ({
   mainContainer: {
     marginTop: rem(40),
+    backgroundColor: 'inherit',
   }
 }));
 
@@ -26,7 +21,7 @@ const App = () => {
       <Header />
       <Container className={classes.mainContainer}>
         <Routes>
-          <Route path='/' element={<Base />} />
+          <Route path={ROUTES.HOME} element={<Home />} />
         </Routes>
       </Container>
     </>
