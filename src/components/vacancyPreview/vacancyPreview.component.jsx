@@ -1,17 +1,24 @@
 import { Center, Flex, Stack, Text, Title } from "@mantine/core";
 import Card from "../layout/card/card.component";
 import StarButton from "../starButton/starButton.component";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as GeoIcon } from '../../assets/icons/geo.svg';
 import { ReactComponent as DotIcon } from '../../assets/icons/dot.svg';
 
 import useStyles from "./vacancyPreview.styles";
+import ROUTES from "../../constants/routes";
 
-const VacancyPreview = ({ vacancy }) => {
+const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
+  const navigate = useNavigate();
   const { classes } = useStyles();
 
+  const handleCardClick = () => {
+    navigate(`${ROUTES.VACANCY}/${vacancy.id}`);
+  };
+
   return (
-    <Card>
+    <Card onClick={handleCardClick} className={!isInFullVacancy && classes.cardLink}>
       <Stack spacing='lg'>
         <Flex gap='md' className={classes.titleWrapper}>
           <Title order={2} className={classes.profession}>{vacancy.profession}</Title>

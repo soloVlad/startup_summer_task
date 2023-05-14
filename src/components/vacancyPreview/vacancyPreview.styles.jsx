@@ -1,15 +1,14 @@
 import { createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
+  cardLink: {
+    cursor: 'pointer',
+  },
   titleWrapper: {
     justifyContent: 'space-between',
   },
   profession: {
     color: theme.colors['bright-blue'][4],
-  },
-  starIconWrapper: {
-    width: rem(24),
-    height: rem(24),
   },
   infoWrapper: {
     alignItems: 'center',

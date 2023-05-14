@@ -9,7 +9,8 @@ const StarButton = () => {
   const [isActive, setIsActive] = useState(false);
   const { classes } = useStyles();
 
-  const handleStarClick = () => {
+  const handleStarClick = (event) => {
+    event.stopPropagation();
     setIsActive(!isActive);
   };
 

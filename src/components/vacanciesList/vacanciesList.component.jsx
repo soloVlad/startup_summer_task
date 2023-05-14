@@ -1,4 +1,4 @@
-import { Button, Center, Stack, TextInput, rem } from "@mantine/core";
+import { Button, Stack, TextInput, rem } from "@mantine/core";
 import VacancyPreview from "../vacancyPreview/vacancyPreview.component";
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
