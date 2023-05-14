@@ -36,12 +36,30 @@ const theme = {
           md: 1148,
         }
       }
+    },
+    Button: {
+      styles: (theme) => ({
+        root: {
+          height: 'auto',
+          backgroundColor: theme.colors['bright-blue'][4],
+          fontWeight: 500,
+          fontSize: theme.fontSizes.md,
+          border: 'none'
+        },
+        inner: {
+          height: 'auto',
+        },
+        label: {
+          lineHeight: rem(21),
+        }
+      })
     }
   },
   other: {
     cardRadius: rem(12),
     cardPadding: rem(24),
     cardMaxWidth: rem(773),
+    cardBorderColor: '#EAEBED',
   }
 }
 

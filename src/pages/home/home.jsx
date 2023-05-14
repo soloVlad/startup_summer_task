@@ -1,5 +1,4 @@
 import VacanciesList from "../../components/vacanciesList/vacanciesList.component";
-import VacancyPreview from "../../components/vacancyPreview/vacancyPreview.component";
 
 const vacancies = [
   {
@@ -51,7 +50,7 @@ const vacancies = [
 
 const Home = () => {
   return (
-    <VacanciesList vacancies={vacancies} />
+    <VacanciesList vacancies={vacancies} withSearch={true} />
   );
 };
 
