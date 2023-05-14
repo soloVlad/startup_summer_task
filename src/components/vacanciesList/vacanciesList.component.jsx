@@ -30,6 +30,7 @@ const VacanciesList = ({ vacancies, withSearch }) => {
             icon: classes.searchIcon,
           }}
           className={classes.wrapper}
+          aria-label='search vacancy'
         />
       }
       {

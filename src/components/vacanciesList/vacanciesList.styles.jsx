@@ -5,9 +5,15 @@ const useStyles = createStyles((theme) => ({
     maxWidth: theme.other.cardMaxWidth,
   },
   searchInput: {
+    width: '100%',
     height: rem(48),
-    padding: `${rem(8)} ${rem(12)}`,
     border: `1px solid ${theme.other.cardBorderColor}`,
+    lineHeight: rem(21),
+    caretColor: theme.colors['bright-blue'][4],
+
+    '&:focus': {
+      border: `1px solid ${theme.colors['bright-blue'][4]}`,
+    },
   },
   searchIcon: {
     left: rem(14),
