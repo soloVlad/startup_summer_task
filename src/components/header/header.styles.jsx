@@ -1,4 +1,4 @@
-import { Group, Anchor, rem, Flex, Container, createStyles, Paper } from "@mantine/core";
+import { rem, createStyles } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   header: {
@@ -10,13 +10,14 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
   },
   logo: {
-    marginRight: `min(25% ,${rem(270)})`
+    marginRight: `min(25% ,${rem(280)})`
   },
   menu: {
     columnGap: rem(60),
   },
   menuItem: {
     fontWeight: 500,
+    fontSize: rem(16),
     lineHeight: rem(20),
     color: theme.black,
 
