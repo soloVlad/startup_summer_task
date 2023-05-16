@@ -1,6 +1,10 @@
 import { createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
+  listWrapper: {
+    maxWidth: theme.other.cardMaxWidth,
+    width: '100%',
+  },
   wrapper: {
     maxWidth: theme.other.cardMaxWidth,
   },

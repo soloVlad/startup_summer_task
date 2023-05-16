@@ -1,10 +1,11 @@
 import { Button, Stack, Text, rem } from "@mantine/core";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as EmptyStateIcon } from '../../assets/icons/guyWithSearch.svg';
 
-import useStyles from "./emptyState.styles";
-import { useNavigate } from "react-router-dom";
 import ROUTES from "../../constants/routes";
+
+import useStyles from "./emptyState.styles";
 
 const EmptyState = () => {
   const navigate = useNavigate();

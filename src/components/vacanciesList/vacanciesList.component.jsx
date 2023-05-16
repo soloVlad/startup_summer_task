@@ -9,7 +9,7 @@ const VacanciesList = ({ vacancies, withSearch }) => {
   const { classes } = useStyles();
 
   return (
-    <Stack spacing='lg'>
+    <Stack spacing='lg' className={classes.listWrapper}>
       {
         withSearch &&
         <TextInput

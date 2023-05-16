@@ -5,6 +5,7 @@ import { Container, createStyles, rem } from "@mantine/core";
 import ROUTES from "./constants/routes";
 
 import Home from "./pages/home/home";
+import Favorites from "./pages/favorites/favorites.component";
 
 const useStyles = createStyles((theme) => ({
   mainContainer: {
@@ -22,6 +23,7 @@ const App = () => {
       <Container className={classes.mainContainer}>
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
+          <Route path={ROUTES.FAVORITES} element={<Favorites />} />
         </Routes>
       </Container>
     </>

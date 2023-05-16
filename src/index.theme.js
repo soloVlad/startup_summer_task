@@ -16,6 +16,7 @@ const theme = {
   black: '#232134',
   colors: {
     'bright-blue': ['#DEECFF', '#C9E0FF', '#B7D6FF', '#92C1FF', '#5E96FC', '#3B7CD3', '#3B7CD3', '#3B7CD3', '#3B7CD3', '#3B7CD3'],
+    'grey-scale': ['#F5F5F6', '#EAEBED', '#D5D6DC', '#ACADB9', '#7B7C88', '#343A40', '#343A40', '#343A40', '#343A40', '#343A40'],
   },
   primaryColor: 'bright-blue',
   headings: {
@@ -60,6 +61,7 @@ const theme = {
     cardPadding: rem(24),
     cardMaxWidth: rem(773),
     cardBorderColor: '#EAEBED',
+    grey500Color: '#ACADB9',
   }
 }
 

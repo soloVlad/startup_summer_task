@@ -1,56 +1,76 @@
+import { Flex, rem } from "@mantine/core";
+import Filters from "../../components/filters/filters.component";
 import VacanciesList from "../../components/vacanciesList/vacanciesList.component";
 
 const vacancies = [
   {
     id: 1,
-    profession: 'Junior JS developer',
-    firm_name: 'Pyatorochka',
+    profession: 'Менеджер-дизайнер',
+    firm_name: 'Пятёрочка',
     town: {
-      title: 'Minsk',
+      title: 'Новый Уренгой',
     },
     type_of_work: {
-      title: 'fulltime job',
+      title: 'Полный рабочий день',
     },
-    payment_from: 0,
-    payment_to: 2000,
+    payment_from: 70000,
+    payment_to: 0,
     currency: 'rub',
     agreement: 'false',
   },
   {
     id: 2,
-    profession: 'Junior JS developer',
-    firm_name: 'Pyatorochka',
+    profession: 'Ведущий графический дизайнер НЕ УДАЛЕННО',
+    firm_name: 'Пятёрочка',
     town: {
-      title: 'Minsk',
+      title: 'Москва',
     },
     type_of_work: {
-      title: 'fulltime job',
+      title: 'Полный рабочий день',
     },
-    payment_from: 0,
+    payment_from: 80000,
     payment_to: 0,
     currency: 'rub',
-    agreement: 'true',
+    agreement: 'false',
   },
   {
     id: 3,
-    profession: 'Junior JS developer',
-    firm_name: 'Pyatorochka',
+    profession: 'Работник декорации, дизайнер (ТЦ Амбар)',
+    firm_name: 'Пятёрочка',
     town: {
-      title: 'Minsk',
+      title: 'Самара',
     },
     type_of_work: {
-      title: 'fulltime job',
+      title: 'Сменный график работы',
     },
-    payment_from: 15000,
-    payment_to: 20000,
+    payment_from: 29000,
+    payment_to: 29000,
     currency: 'rub',
-    agreement: 'true',
+    agreement: 'false',
+  },
+  {
+    id: 4,
+    profession: 'Менеджер-дизайнер',
+    firm_name: 'Pyatorochka',
+    town: {
+      title: 'Тюмень',
+    },
+    type_of_work: {
+      title: 'Полный рабочий день',
+    },
+    payment_from: 55000,
+    payment_to: 95000,
+    currency: 'rub',
+    agreement: 'false',
   }
 ];
 
 const Home = () => {
   return (
-    <VacanciesList vacancies={vacancies} withSearch={true} />
+    <Flex gap={rem(28)} align='start'>
+      <Filters />
+      <VacanciesList vacancies={vacancies} withSearch={true} />
+    </Flex>
   );
 };
 
