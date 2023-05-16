@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Center } from "@mantine/core";
+import { ActionIcon, Center, rem } from "@mantine/core";
 
 import { ReactComponent as StarIcon } from '../../assets/icons/star.svg';
 
@@ -15,11 +15,16 @@ const StarButton = () => {
   };
 
   return (
-    <Center className={classes.wrapper} onClick={handleStarClick}>
+    <ActionIcon
+      variant='transparent'
+      className={classes.wrapper}
+      onClick={handleStarClick}
+      size={rem(24)}
+    >
       <StarIcon
-        className={`${classes.star} ${isActive ? classes.starActive : ''}`}
+        className={`${isActive ? classes.starActive : classes.star}`}
       />
-    </Center>
+    </ActionIcon>
   );
 };
 

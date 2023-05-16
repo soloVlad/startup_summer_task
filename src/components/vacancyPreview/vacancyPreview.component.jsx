@@ -19,14 +19,14 @@ const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
 
   return (
     <Card onClick={handleCardClick} className={!isInFullVacancy && classes.cardLink}>
-      <Stack spacing='lg'>
+      <Stack spacing='md'>
         <Flex gap='md' className={classes.titleWrapper}>
           <Title order={2} className={classes.profession}>{vacancy.profession}</Title>
           <StarButton vacancyId={vacancy.id} />
         </Flex>
         <Flex gap='md' className={classes.infoWrapper}>
           <Title order={3}>
-            {`${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}`}
+            {`з/п от ${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}`}
           </Title>
           <Center className={classes.dotIconWrapper}>
             <DotIcon className={classes.dotIcon} />

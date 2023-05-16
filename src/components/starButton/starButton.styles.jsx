@@ -3,11 +3,14 @@ import { createStyles, rem } from "@mantine/core";
 
 const useStyles = createStyles((theme) => ({
   wrapper: {
-    width: rem(24),
-    height: rem(24),
+    display: 'flex',
   },
   star: {
     stroke: '#ACADB9',
+
+    '&:hover': {
+      stroke: theme.colors['bright-blue'][4],
+    },
   },
   starActive: {
     fill: theme.colors['bright-blue'][4],
