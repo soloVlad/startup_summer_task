@@ -14,10 +14,10 @@ const InputWithArrows = ({ className, label, placeholder, classNames }) => {
       // rightSection={
       //   <Stack spacing={rem(2)}>
       //     <ActionIcon variant='transparent' size={rem(12)}>
-      //       <ArrowUp />
+      //       <ArrowUp className={classes.numberArrow} />
       //     </ActionIcon>
       //     <ActionIcon variant='transparent' size={rem(12)}>
-      //       <ArrowDown />
+      //       <ArrowDown className={classes.numberArrow} />
       //     </ActionIcon>
       //   </Stack>
       // }

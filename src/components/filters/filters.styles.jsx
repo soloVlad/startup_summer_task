@@ -49,6 +49,7 @@ const useStyles = createStyles((theme) => ({
   },
   selectArrow: {
     stroke: theme.colors['grey-scale'][3],
+    pointerEvents: 'none',
   },
   submitButton: {
     paddingTop: rem(9.5),

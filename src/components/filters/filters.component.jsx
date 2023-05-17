@@ -9,9 +9,6 @@ import InputWithArrows from "../layout/inputWithArrows/inputWithArrows.component
 const Filters = () => {
   const { classes } = useStyles();
 
-  const handleControlsClick = (event) => {
-  };
-
   return (
     <Card className={classes.filtersWrapper}>
       <Stack spacing='xl'>
@@ -24,15 +21,14 @@ const Filters = () => {
         </Flex>
 
         <Select
-          onClick={handleControlsClick}
           label='Отрасль'
           data={['hell']}
           placeholder='Выберите отрасль'
-          // rightSection={
-          //   <ActionIcon variant='transparent' onClick={handleControlsClick}>
-          //     <SelectArrowIcon className={classes.selectArrow} />
-          //   </ActionIcon>
-          // }
+          rightSection={
+            <ActionIcon variant='transparent'>
+              <SelectArrowIcon className={classes.selectArrow} />
+            </ActionIcon>
+          }
           rightSectionWidth={rem(48)}
           classNames={{
             rightSection: classes.selectArrow,
