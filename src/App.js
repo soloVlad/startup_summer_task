@@ -6,6 +6,7 @@ import ROUTES from "./constants/routes";
 
 import Home from "./pages/home/home";
 import Favorites from "./pages/favorites/favorites.component";
+import Vacancy from "./pages/vacancy/vacancy.component";
 
 const useStyles = createStyles((theme) => ({
   mainContainer: {
@@ -24,6 +25,7 @@ const App = () => {
         <Routes>
           <Route path={ROUTES.HOME} element={<Home />} />
           <Route path={ROUTES.FAVORITES} element={<Favorites />} />
+          <Route path={`${ROUTES.VACANCY}/:id`} element={<Vacancy />} />
         </Routes>
       </Container>
     </>

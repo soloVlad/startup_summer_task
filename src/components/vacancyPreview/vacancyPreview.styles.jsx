@@ -36,6 +36,22 @@ const useStyles = createStyles((theme) => ({
     width: rem(13.3),
     height: rem(16.1),
   },
+
+  professionInFull: {
+    fontWeight: 700,
+    fontSize: rem(28),
+    lineHeight: rem(34),
+    color: theme.black,
+  },
+  paymentInFull: {
+    fontWeight: 700,
+    fontSize: rem(20),
+    lineHeight: rem(20),
+  },
+  typeOfWorkInFull: {
+    fontSize: rem(20),
+    lineHeight: rem(20),
+  },
 }));
 
 export default useStyles;

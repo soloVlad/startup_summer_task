@@ -18,20 +18,32 @@ const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
   };
 
   return (
-    <Card onClick={handleCardClick} className={!isInFullVacancy && classes.cardLink}>
-      <Stack spacing='md'>
+    <Card
+      onClick={handleCardClick}
+      className={`${!isInFullVacancy && classes.cardLink}`}
+    >
+      <Stack spacing={`${isInFullVacancy ? 'lg' : 'md'}`}>
         <Flex gap='md' className={classes.titleWrapper}>
-          <Title order={2} className={classes.profession}>{vacancy.profession}</Title>
+          <Title
+            order={2}
+            className={`${classes.profession} ${isInFullVacancy && classes.professionInFull}`}
+          >
+            {vacancy.profession}
+          </Title>
           <StarButton vacancyId={vacancy.id} />
         </Flex>
         <Flex gap='md' className={classes.infoWrapper}>
-          <Title order={3}>
+          <Title order={3} className={isInFullVacancy && classes.paymentInFull}>
             {`з/п от ${vacancy.payment_from} - ${vacancy.payment_to} ${vacancy.currency}`}
           </Title>
           <Center className={classes.dotIconWrapper}>
             <DotIcon className={classes.dotIcon} />
           </Center>
-          <Text className={classes.typeOfWork}>{vacancy.type_of_work.title}</Text>
+          <Text
+            className={`${classes.typeOfWork} ${isInFullVacancy && classes.typeOfWorkInFull}`}
+          >
+            {vacancy.type_of_work.title}
+          </Text>
         </Flex>
         <Flex gap='sm' className={classes.geoWrapper}>
           <Center className={classes.geoIconWrapper}>
