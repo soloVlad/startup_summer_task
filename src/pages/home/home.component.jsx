@@ -1,6 +1,9 @@
-import { Flex, rem } from "@mantine/core";
+import { Button, Flex, MediaQuery, Menu, rem } from "@mantine/core";
 import Filters from "../../components/filters/filters.component";
 import VacanciesList from "../../components/vacanciesList/vacanciesList.component";
+
+import useStyles from "./home.styles";
+import { useState } from "react";
 
 const vacancies = [
   {
@@ -66,11 +69,14 @@ const vacancies = [
 ];
 
 const Home = () => {
+
+  const { classes } = useStyles();
+
   return (
-    <Flex gap={rem(28)} align='start'>
+    <Flex gap={rem(28)} align='start' className={classes.wrapper}>
       <Filters />
       <VacanciesList vacancies={vacancies} withSearch={true} />
-    </Flex>
+    </Flex >
   );
 };
 

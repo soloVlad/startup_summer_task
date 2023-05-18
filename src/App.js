@@ -4,7 +4,7 @@ import { Container, createStyles, rem } from "@mantine/core";
 
 import ROUTES from "./constants/routes";
 
-import Home from "./pages/home/home";
+import Home from "./pages/home/home.component";
 import Favorites from "./pages/favorites/favorites.component";
 import Vacancy from "./pages/vacancy/vacancy.component";
 
@@ -12,6 +12,10 @@ const useStyles = createStyles((theme) => ({
   mainContainer: {
     marginTop: rem(40),
     backgroundColor: 'inherit',
+
+    [theme.fn.smallerThan('sm')]: {
+      marginTop: rem(20),
+    }
   }
 }));
 

@@ -6,6 +6,15 @@ const useStyles = createStyles((theme) => ({
     width: '100%',
     minHeight: rem(360),
     padding: theme.spacing.xl,
+
+    [theme.fn.smallerThan('sm')]: {
+      display: 'none',
+    }
+  },
+  filtersOpened: {
+    [theme.fn.smallerThan('sm')]: {
+      display: 'block',
+    }
   },
   formTitleWrapper: {
     marginBottom: rem(12),
@@ -83,7 +92,15 @@ const useStyles = createStyles((theme) => ({
   submitButton: {
     paddingTop: rem(9.5),
     paddingBottom: rem(9.5),
-  }
+  },
+  toggleFilters: {
+    display: 'none',
+    padding: `${rem(8)} ${rem(12)}`,
+
+    [`@media (max-width: ${theme.breakpoints.sm - 1}px)`]: {
+      display: 'block',
+    }
+  },
 }));
 
 export default useStyles;

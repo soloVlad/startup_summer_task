@@ -1,6 +1,9 @@
 import { rem } from "@mantine/core";
 
 const theme = {
+  breakpoints: {
+    sm: 790,
+  },
   defaultRadius: rem(8),
   fontFamily: 'Inter, sans-serif',
   fontSizes: {
