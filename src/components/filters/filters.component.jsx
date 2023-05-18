@@ -1,4 +1,5 @@
-import { ActionIcon, Button, Flex, Group, NumberInput, Select, Stack, Text, rem } from "@mantine/core";
+import { useState } from "react";
+import { ActionIcon, Button, Flex, Group, Select, Stack, Text, rem } from "@mantine/core";
 import Card from "../layout/card/card.component";
 import useStyles from "./filters.styles";
 
@@ -8,6 +9,11 @@ import InputWithArrows from "../layout/inputWithArrows/inputWithArrows.component
 
 const Filters = () => {
   const { classes } = useStyles();
+  const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+
+  const changeDropdownState = () => {
+    setIsDropdownOpened(!isDropdownOpened);
+  };
 
   return (
     <Card className={classes.filtersWrapper}>
@@ -22,19 +28,27 @@ const Filters = () => {
 
         <Select
           label='Отрасль'
-          data={['hell']}
+          allowDeselect
+          data={['hell', 'hell2']}
           placeholder='Выберите отрасль'
           rightSection={
             <ActionIcon variant='transparent'>
-              <SelectArrowIcon className={classes.selectArrow} />
+              <SelectArrowIcon
+                className={`${classes.selectArrow} ${isDropdownOpened && classes.selectArrowActive}`}
+              />
             </ActionIcon>
           }
+          onDropdownOpen={changeDropdownState}
+          onDropdownClose={changeDropdownState}
           rightSectionWidth={rem(48)}
           classNames={{
-            rightSection: classes.selectArrow,
+            rightSection: `${classes.selectRight} `,
             label: classes.label,
             input: classes.input,
+            item: classes.dropdownItem,
+            itemsWrapper: classes.dropdownWrapper,
           }}
+          className={classes.select}
         />
 
         <Stack spacing='sm'>

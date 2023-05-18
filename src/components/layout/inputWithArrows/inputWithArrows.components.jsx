@@ -22,7 +22,13 @@ const InputWithArrows = ({ className, label, placeholder, classNames }) => {
       //   </Stack>
       // }
       rightSectionWidth={rem(34)}
-      classNames={classNames}
+      classNames={{
+        ...classNames,
+        rightSection: classes.rightSection,
+        control: classes.control,
+        controlUp: classes.controlUp,
+        controlDown: classes.controlDown,
+      }}
       className={`${className}`}
     />
   );

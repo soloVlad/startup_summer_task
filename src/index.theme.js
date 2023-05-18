@@ -9,8 +9,8 @@ const theme = {
   spacing: {
     sm: rem(8),
     md: rem(12),
-    lg: rem(16),
-    xl: rem(20),
+    lg: rem(15),
+    xl: rem(19),
   },
   white: '#FFF',
   black: '#232134',
@@ -62,6 +62,7 @@ const theme = {
     cardMaxWidth: rem(773),
     cardBorderColor: '#EAEBED',
     grey500Color: '#ACADB9',
+    defaultTransition: '0.2s ease all',
   }
 }
 

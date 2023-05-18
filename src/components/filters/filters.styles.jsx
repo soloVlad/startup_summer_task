@@ -45,11 +45,40 @@ const useStyles = createStyles((theme) => ({
     lineHeight: rem(20),
     padding: `${rem(11)} ${rem(12)}`,
     height: rem(42),
-
+  },
+  selectRight: {
+    pointerEvents: 'none',
   },
   selectArrow: {
+    transition: theme.other.defaultTransition,
+    ref: getStylesRef('selectArrow'),
     stroke: theme.colors['grey-scale'][3],
-    pointerEvents: 'none',
+  },
+  selectArrowActive: {
+    stroke: theme.colors['bright-blue'][4],
+    transform: 'rotate(180deg)',
+  },
+  dropdownWrapper: {
+
+  },
+  dropdownItem: {
+    padding: rem(8),
+    borderRadius: rem(8),
+    lineHeight: rem(20),
+    transition: theme.other.defaultTransition,
+
+    '&[data-selected]': {
+      paddingLeft: rem(12),
+      paddingRight: rem(12),
+      backgroundColor: theme.colors['bright-blue'][4],
+      fontWeight: 500,
+    },
+
+    '&:hover': {
+      paddingLeft: rem(12),
+      paddingRight: rem(12),
+      backgroundColor: theme.colors['bright-blue'][0],
+    },
   },
   submitButton: {
     paddingTop: rem(9.5),
