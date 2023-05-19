@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/header.component";
 import { Container, createStyles, rem } from "@mantine/core";
@@ -7,6 +9,7 @@ import ROUTES from "./constants/routes";
 import Home from "./pages/home/home.component";
 import Favorites from "./pages/favorites/favorites.component";
 import Vacancy from "./pages/vacancy/vacancy.component";
+import { getAuth } from "./axios/requests";
 
 const useStyles = createStyles((theme) => ({
   mainContainer: {
@@ -19,8 +22,21 @@ const useStyles = createStyles((theme) => ({
   }
 }));
 
+const login = async () => {
+  // TODO: check ttl of token, use refresh token
+  if (localStorage.getItem('token')) return;
+
+  const response = await getAuth();
+  localStorage.setItem('token', JSON.stringify(response));
+};
+
 const App = () => {
   const { classes } = useStyles();
+
+
+  useEffect(() => {
+    login();
+  }, []);
 
   return (
     <>
