@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(5.5)} ${rem(20)}`
   },
   loader: {
-    margin: '20% auto',
+    margin: theme.other.loaderMargin,
   }
 }));
 

@@ -33,7 +33,6 @@ const login = async () => {
 const App = () => {
   const { classes } = useStyles();
 
-
   useEffect(() => {
     login();
   }, []);

@@ -14,4 +14,9 @@ export const getVacancies = async (params) => {
     }
   });
   return data;
-}
+};
+
+export const getVacancyById = async (id) => {
+  const { data } = await instance.get(`${ENDPOINTS.VACANCIES}${id}/`)
+  return data;
+};

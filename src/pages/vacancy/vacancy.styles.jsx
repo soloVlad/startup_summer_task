@@ -12,6 +12,10 @@ const useStyles = createStyles((theme) => ({
       fontSize: rem(20),
       lineHeight: rem(20),
     },
+  },
+  loader: {
+    margin: theme.other.loaderMargin,
+    display: 'block',
   }
 }));
 

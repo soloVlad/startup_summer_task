@@ -58,7 +58,7 @@ const theme = {
           lineHeight: rem(21),
         }
       })
-    }
+    },
   },
   other: {
     cardRadius: rem(12),
@@ -67,6 +67,7 @@ const theme = {
     cardBorderColor: '#EAEBED',
     grey500Color: '#ACADB9',
     defaultTransition: '0.2s ease all',
+    loaderMargin: '20% auto',
   }
 }
 
