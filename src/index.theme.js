@@ -33,6 +33,7 @@ const theme = {
       h4: { fontWeight: 400, fontSize: rem(16), lineHeight: rem(19) },
     }
   },
+  loader: 'dots',
   components: {
     Container: {
       defaultProps: {

@@ -24,6 +24,9 @@ const useStyles = createStyles((theme) => ({
   },
   searchButton: {
     padding: `${rem(5.5)} ${rem(20)}`
+  },
+  loader: {
+    margin: '20% auto',
   }
 }));
 

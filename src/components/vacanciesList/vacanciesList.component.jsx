@@ -1,11 +1,11 @@
-import { Button, Stack, TextInput, rem } from "@mantine/core";
+import { Button, Loader, Stack, TextInput, rem } from "@mantine/core";
 import VacancyPreview from "../vacancyPreview/vacancyPreview.component";
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 
 import useStyles from "./vacanciesList.styles";
 
-const VacanciesList = ({ vacancies, withSearch }) => {
+const VacanciesList = ({ vacancies, withSearch, isLoading }) => {
   const { classes } = useStyles();
 
   return (
@@ -34,7 +34,9 @@ const VacanciesList = ({ vacancies, withSearch }) => {
         />
       }
       {
-        vacancies.map(vacancy => <VacancyPreview key={vacancy.id} vacancy={vacancy} />)
+        isLoading
+          ? <Loader className={classes.loader} />
+          : vacancies.map(vacancy => <VacancyPreview key={vacancy.id} vacancy={vacancy} />)
       }
     </Stack>
   );

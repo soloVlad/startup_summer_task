@@ -8,18 +8,21 @@ import { MantineProvider } from '@mantine/core';
 
 import './index.scss';
 import theme from './index.theme';
+import { VacanciesProvider } from './contexts/vacancies.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <MantineProvider
-        withNormalizeCSS
-        withGlobalStyles
-        theme={theme}
-      >
-        <App />
-      </MantineProvider>
+      <VacanciesProvider>
+        <MantineProvider
+          withNormalizeCSS
+          withGlobalStyles
+          theme={theme}
+        >
+          <App />
+        </MantineProvider>
+      </VacanciesProvider>
     </BrowserRouter>
   </React.StrictMode>
 );
