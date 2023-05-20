@@ -9,8 +9,11 @@ instance.interceptors.request.use((config) => {
   config.headers['X-Api-App-Id'] = X_API_APP_ID;
   config.headers['x-secret-key'] = X_SECRET_KEY;
 
-  const token = JSON.parse(localStorage.getItem('token')).access_token;
-  config.headers.Authorization = `Bearer ${token}`;
+  const token = JSON.parse(localStorage.getItem('token'))?.access_token;
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
   return config;
 });
 
