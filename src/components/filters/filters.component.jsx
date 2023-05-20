@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ActionIcon, Button, Flex, Group, Select, Stack, Text, rem } from "@mantine/core";
 import Card from "../layout/card/card.component";
 import useStyles from "./filters.styles";
@@ -6,11 +6,13 @@ import useStyles from "./filters.styles";
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as SelectArrowIcon } from '../../assets/icons/selectArrow.svg';
 import InputWithArrows from "../layout/inputWithArrows/inputWithArrows.components";
+import { fetchCatalogues } from "../../axios/requests";
 
 const Filters = ({ className }) => {
   const { classes } = useStyles();
   const [isFiltersOpened, setIsFiltersOpened] = useState(false);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
+  const [catalogues, setCatalogues] = useState([]);
 
   const changeDropdownState = () => {
     setIsDropdownOpened(!isDropdownOpened);
@@ -19,6 +21,16 @@ const Filters = ({ className }) => {
   const changeFiltersState = () => {
     setIsFiltersOpened(!isFiltersOpened);
   }
+
+  useEffect(() => {
+    const loadCatalogues = async () => {
+      const response = await fetchCatalogues();
+      const cataloguesTitles = response.map(item => item.title_trimmed);
+      setCatalogues(cataloguesTitles);
+    };
+
+    loadCatalogues();
+  }, []);
 
   return (
     <>
@@ -44,7 +56,7 @@ const Filters = ({ className }) => {
           <Select
             label='Отрасль'
             allowDeselect
-            data={['hell', 'hell2']}
+            data={catalogues}
             placeholder='Выберите отрасль'
             rightSection={
               <ActionIcon variant='transparent'>

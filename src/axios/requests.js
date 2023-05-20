@@ -30,3 +30,8 @@ export const fetchFavorites = async (arrayOfId) => {
   });
   return data;
 };
+
+export const fetchCatalogues = async () => {
+  const { data } = await instance.get(ENDPOINTS.CATALOGUES);
+  return data;
+};
