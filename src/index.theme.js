@@ -65,7 +65,6 @@ const theme = {
     cardPadding: rem(24),
     cardMaxWidth: rem(773),
     cardBorderColor: '#EAEBED',
-    grey500Color: '#ACADB9',
     defaultTransition: '0.2s ease all',
     loaderMargin: '20% auto',
   }

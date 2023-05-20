@@ -6,7 +6,7 @@ const useStyles = createStyles((theme) => ({
     display: 'flex',
   },
   star: {
-    stroke: '#ACADB9',
+    stroke: theme.colors['grey-scale'][3],
 
     '&:hover': {
       stroke: theme.colors['bright-blue'][4],

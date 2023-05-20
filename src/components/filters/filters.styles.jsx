@@ -26,7 +26,7 @@ const useStyles = createStyles((theme) => ({
   },
   closeButton: {
     cursor: 'pointer',
-    color: theme.other.grey500Color,
+    color: theme.colors['grey-scale'][3],
     fontWeight: 500,
 
     '&:hover': {
@@ -41,7 +41,7 @@ const useStyles = createStyles((theme) => ({
   },
   closeButtonIcon: {
     ref: getStylesRef('closeButtonIcon'),
-    color: theme.other.grey500Color,
+    color: theme.colors['grey-scale'][3],
     stroke: theme.colors['grey-scale'][3],
   },
   label: {
