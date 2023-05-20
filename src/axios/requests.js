@@ -6,7 +6,7 @@ export const getAuth = async () => {
   return data;
 };
 
-export const getVacancies = async (params) => {
+export const fetchVacancies = async (params) => {
   const { data } = await instance.get(ENDPOINTS.VACANCIES, {
     params: {
       count: VACANCIES_PER_PAGE,
@@ -16,7 +16,17 @@ export const getVacancies = async (params) => {
   return data;
 };
 
-export const getVacancyById = async (id) => {
-  const { data } = await instance.get(`${ENDPOINTS.VACANCIES}${id}/`)
+export const fetchVacancyById = async (id) => {
+  const { data } = await instance.get(`${ENDPOINTS.VACANCIES}${id}/`);
+  return data;
+};
+
+export const fetchFavorites = async (arrayOfId) => {
+  const { data } = await instance.get(ENDPOINTS.VACANCIES, {
+    params: {
+      count: arrayOfId.length,
+      ids: arrayOfId,
+    }
+  });
   return data;
 };

@@ -5,7 +5,7 @@ import Card from "../../components/layout/card/card.component";
 
 import useStyles from "./vacancy.styles";
 import { useEffect, useState } from "react";
-import { getVacancyById } from "../../axios/requests";
+import { fetchVacancyById } from "../../axios/requests";
 
 const Vacancy = () => {
   const { classes } = useStyles();
@@ -14,7 +14,7 @@ const Vacancy = () => {
 
   useEffect(() => {
     const fetchVacancy = async () => {
-      const response = await getVacancyById(id);
+      const response = await fetchVacancyById(id);
       setVacancy(response);
     }
 

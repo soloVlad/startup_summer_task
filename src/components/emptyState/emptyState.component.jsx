@@ -7,7 +7,7 @@ import ROUTES from "../../constants/routes";
 
 import useStyles from "./emptyState.styles";
 
-const EmptyState = () => {
+const EmptyState = (props) => {
   const navigate = useNavigate();
 
   const { classes } = useStyles();
@@ -17,7 +17,7 @@ const EmptyState = () => {
   };
 
   return (
-    <Stack spacing={rem(32)} align='center' className={classes.wrapper}>
+    <Stack spacing={rem(32)} align='center' className={classes.wrapper} {...props}>
       <EmptyStateIcon />
       <Text className={classes.text}>Упс, здесь еще ничего нет!</Text>
       <Button

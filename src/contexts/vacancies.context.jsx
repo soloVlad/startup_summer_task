@@ -1,5 +1,5 @@
 import { createContext, useEffect, useReducer } from "react";
-import { getVacancies } from "../axios/requests";
+import { fetchFavorites, fetchVacancies } from "../axios/requests";
 import { createAction } from "../utils/reducer/reducer.utils";
 
 const VACANCIES_ACTION_TYPES = {
@@ -11,7 +11,7 @@ const VACANCIES_ACTION_TYPES = {
 const INITIAL_STATE = {
   vacancies: [],
   isLoading: false,
-  favorites: [],
+  favoritesIds: [],
 };
 
 const vacanciesReducer = (state, action) => {
@@ -49,17 +49,17 @@ const getFavoritesFromLocalStorage = () => {
   return JSON.parse(localStorage.getItem('favorites')) || [];
 };
 
-const saveFavoritesToLocalStorage = (favorites) => {
-  localStorage.setItem('favorites', JSON.stringify(favorites));
+const saveFavoritesToLocalStorage = (favoritesIds) => {
+  localStorage.setItem('favorites', JSON.stringify(favoritesIds));
 };
 
 export const VacanciesProvider = ({ children }) => {
-  const [{ vacancies, isLoading, favorites }, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
+  const [{ vacancies, isLoading, favoritesIds }, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
 
   useEffect(() => {
     const loadVacancies = async () => {
       dispatch(createAction(VACANCIES_ACTION_TYPES.SET_IS_LOADING, true));
-      const { objects: vacancies } = await getVacancies();
+      const { objects: vacancies } = await fetchVacancies();
       const payload = { vacancies };
 
       dispatch(createAction(VACANCIES_ACTION_TYPES.SET_VACANCIES, payload));
@@ -71,35 +71,35 @@ export const VacanciesProvider = ({ children }) => {
 
   useEffect(() => {
     const savedFavorites = getFavoritesFromLocalStorage();
-    const payload = { favorites: savedFavorites };
+    const payload = { favoritesIds: savedFavorites };
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_FAVORITES, payload));
   }, []);
 
-  const updateFavorites = (favorites) => {
-    const payload = { favorites };
+  const updateFavorites = (favoritesIds) => {
+    const payload = { favoritesIds };
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_FAVORITES, payload));
   }
 
   const addFavorite = (id) => {
-    const newFavorites = [...favorites, id];
-    saveFavoritesToLocalStorage(newFavorites);
-    updateFavorites(newFavorites);
+    const newFavoritesIds = [...favoritesIds, id];
+    saveFavoritesToLocalStorage(newFavoritesIds);
+    updateFavorites(newFavoritesIds);
   };
 
   const deleteFavorite = (id) => {
-    const newFavorites = favorites.filter(favoriteId => favoriteId !== id);
-    saveFavoritesToLocalStorage(newFavorites);
-    updateFavorites(newFavorites);
+    const newFavoritesIds = favoritesIds.filter(favoriteId => favoriteId !== id);
+    saveFavoritesToLocalStorage(newFavoritesIds);
+    updateFavorites(newFavoritesIds);
   };
 
   const isFavorite = (id) => {
-    return favorites.includes(id);
+    return favoritesIds.includes(id);
   }
 
   const value = {
     vacancies,
     isLoading,
-    favorites,
+    favoritesIds,
     isFavorite,
     addFavorite,
     deleteFavorite,
