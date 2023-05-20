@@ -5,11 +5,13 @@ import { createAction } from "../utils/reducer/reducer.utils";
 const VACANCIES_ACTION_TYPES = {
   SET_VACANCIES: 'SET_VACANCIES',
   SET_IS_LOADING: 'SET_IS_LOADING',
+  SET_FAVORITES: 'SET_FAVORITES'
 };
 
 const INITIAL_STATE = {
   vacancies: [],
   isLoading: false,
+  favorites: [],
 };
 
 const vacanciesReducer = (state, action) => {
@@ -20,12 +22,17 @@ const vacanciesReducer = (state, action) => {
       return {
         ...state,
         ...payload
-      }
+      };
     case VACANCIES_ACTION_TYPES.SET_IS_LOADING:
       return {
         ...state,
         isLoading: payload,
-      }
+      };
+    case VACANCIES_ACTION_TYPES.SET_FAVORITES:
+      return {
+        ...state,
+        ...payload,
+      };
     default:
       throw new Error(`Unhandled type ${type} in vacanciesReducer`);
   };
@@ -33,10 +40,21 @@ const vacanciesReducer = (state, action) => {
 
 export const VacanciesContext = createContext({
   ...INITIAL_STATE,
+  isFavorite: () => { },
+  addFavorite: () => { },
+  deleteFavorite: () => { },
 });
 
+const getFavoritesFromLocalStorage = () => {
+  return JSON.parse(localStorage.getItem('favorites')) || [];
+};
+
+const saveFavoritesToLocalStorage = (favorites) => {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+};
+
 export const VacanciesProvider = ({ children }) => {
-  const [{ vacancies, isLoading }, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
+  const [{ vacancies, isLoading, favorites }, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
 
   useEffect(() => {
     const loadVacancies = async () => {
@@ -51,9 +69,40 @@ export const VacanciesProvider = ({ children }) => {
     loadVacancies();
   }, []);
 
+  useEffect(() => {
+    const savedFavorites = getFavoritesFromLocalStorage();
+    const payload = { favorites: savedFavorites };
+    dispatch(createAction(VACANCIES_ACTION_TYPES.SET_FAVORITES, payload));
+  }, []);
+
+  const updateFavorites = (favorites) => {
+    const payload = { favorites };
+    dispatch(createAction(VACANCIES_ACTION_TYPES.SET_FAVORITES, payload));
+  }
+
+  const addFavorite = (id) => {
+    const newFavorites = [...favorites, id];
+    saveFavoritesToLocalStorage(newFavorites);
+    updateFavorites(newFavorites);
+  };
+
+  const deleteFavorite = (id) => {
+    const newFavorites = favorites.filter(favoriteId => favoriteId !== id);
+    saveFavoritesToLocalStorage(newFavorites);
+    updateFavorites(newFavorites);
+  };
+
+  const isFavorite = (id) => {
+    return favorites.includes(id);
+  }
+
   const value = {
     vacancies,
-    isLoading
+    isLoading,
+    favorites,
+    isFavorite,
+    addFavorite,
+    deleteFavorite,
   };
 
   return (
