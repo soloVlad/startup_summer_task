@@ -17,12 +17,12 @@ const findKeyByTitleTrimmed = (titleTrimmed, catalogues) => {
   return elem.key;
 };
 
-const Filters = ({ className }) => {
+const Filters = ({ className, setFilters, handleSubmit }) => {
   const { classes } = useStyles();
-  const { updateFilters } = useContext(VacanciesContext);
   const [isFiltersOpened, setIsFiltersOpened] = useState(false);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
   const [catalogues, setCatalogues] = useState([]);
+
   const form = useForm({
     initialValues: {
       catalogues: '',
@@ -39,18 +39,22 @@ const Filters = ({ className }) => {
     setIsFiltersOpened(!isFiltersOpened);
   }
 
-  const handleSubmit = (event) => {
+  const onSubmit = (event) => {
     event.preventDefault();
-    updateFilters({
-      ...form.values,
-      catalogues: findKeyByTitleTrimmed(form.values.catalogues, catalogues),
-    });
+    handleSubmit();
   };
 
   const handleReset = () => {
     form.reset();
-    updateFilters(form.values);
-  }
+  };
+
+  useEffect(() => {
+    const preparedFilters = {
+      ...form.values,
+      catalogues: findKeyByTitleTrimmed(form.values.catalogues, catalogues),
+    };
+    setFilters(preparedFilters);
+  }, [form.values]);
 
   useEffect(() => {
     const loadCatalogues = async () => {
@@ -73,7 +77,7 @@ const Filters = ({ className }) => {
       <Card
         className={`${classes.filtersWrapper} ${isFiltersOpened && classes.filtersOpened} ${className}`}
       >
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={onSubmit}>
           <Stack spacing='xl'>
             <Flex justify='space-between' className={classes.formTitleWrapper}>
               <Text className={classes.formTitle}>Фильтры</Text>

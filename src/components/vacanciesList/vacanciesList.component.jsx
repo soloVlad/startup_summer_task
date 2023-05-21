@@ -1,28 +1,42 @@
 import { Button, Loader, Stack, TextInput, rem } from "@mantine/core";
 import VacancyPreview from "../vacancyPreview/vacancyPreview.component";
 
-import { useContext, useRef, useState } from "react";
-import { VacanciesContext } from "../../contexts/vacancies.context";
+import { useEffect, useState } from "react";
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 
 import useStyles from "./vacanciesList.styles";
 
-const VacanciesList = ({ vacancies, withSearch, isLoading }) => {
-  const inputRef = useRef(null);
-  const { updateQuery } = useContext(VacanciesContext);
+const VacanciesList = ({ vacancies, withSearch, isLoading, setQuery = null, handleSubmit = null }) => {
+  const [value, setValue] = useState('');
   const { classes } = useStyles();
 
   const handleSearch = () => {
-    updateQuery(inputRef.current.value);
+    handleSubmit();
   };
+
+  const handleChange = (event) => {
+    setValue(event.target.value);
+  };
+
+  useEffect(() => {
+    setQuery(value);
+  }, [value]);
+
+  // useEffect(() => {
+  //   //TODO: load parameter from URL
+  //   if (withSearch) {
+  //     updateQuery(inputRef.current.value);
+  //   }
+  // }, []);
 
   return (
     <Stack spacing='lg' className={classes.listWrapper}>
       {
         withSearch &&
         <TextInput
-          ref={inputRef}
+          value={value}
+          onChange={handleChange}
           placeholder='Введите название вакансии'
           radius={rem(8)}
           icon={
