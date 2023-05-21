@@ -1,17 +1,21 @@
 import { createContext, useEffect, useReducer } from "react";
-import { fetchFavorites, fetchVacancies } from "../axios/requests";
+import { fetchVacancies } from "../axios/requests";
 import { createAction } from "../utils/reducer/reducer.utils";
 
 const VACANCIES_ACTION_TYPES = {
   SET_VACANCIES: 'SET_VACANCIES',
   SET_IS_LOADING: 'SET_IS_LOADING',
-  SET_FAVORITES: 'SET_FAVORITES'
+  SET_FAVORITES: 'SET_FAVORITES',
+  SET_FILTERS: 'SET_FILTERS',
+  SET_QUERY: 'SET_QUERY',
 };
 
 const INITIAL_STATE = {
   vacancies: [],
   isLoading: false,
   favoritesIds: [],
+  filters: '',
+  query: '',
 };
 
 const vacanciesReducer = (state, action) => {
@@ -33,6 +37,16 @@ const vacanciesReducer = (state, action) => {
         ...state,
         ...payload,
       };
+    case VACANCIES_ACTION_TYPES.SET_FILTERS:
+      return {
+        ...state,
+        filters: { ...payload },
+      };
+    case VACANCIES_ACTION_TYPES.SET_QUERY:
+      return {
+        ...state,
+        query: payload,
+      };
     default:
       throw new Error(`Unhandled type ${type} in vacanciesReducer`);
   };
@@ -43,6 +57,8 @@ export const VacanciesContext = createContext({
   isFavorite: () => { },
   addFavorite: () => { },
   deleteFavorite: () => { },
+  updateFilters: () => { },
+  updateQuery: () => { },
 });
 
 const getFavoritesFromLocalStorage = () => {
@@ -54,12 +70,17 @@ const saveFavoritesToLocalStorage = (favoritesIds) => {
 };
 
 export const VacanciesProvider = ({ children }) => {
-  const [{ vacancies, isLoading, favoritesIds }, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
+  const [state, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
+  const { vacancies, isLoading, favoritesIds, filters, query } = state;
 
   useEffect(() => {
     const loadVacancies = async () => {
       dispatch(createAction(VACANCIES_ACTION_TYPES.SET_IS_LOADING, true));
-      const { objects: vacancies } = await fetchVacancies();
+      const params = {
+        ...filters,
+        keyword: query,
+      };
+      const { objects: vacancies } = await fetchVacancies(params);
       const payload = { vacancies };
 
       dispatch(createAction(VACANCIES_ACTION_TYPES.SET_VACANCIES, payload));
@@ -67,7 +88,7 @@ export const VacanciesProvider = ({ children }) => {
     };
 
     loadVacancies();
-  }, []);
+  }, [filters, query]);
 
   useEffect(() => {
     const savedFavorites = getFavoritesFromLocalStorage();
@@ -96,13 +117,24 @@ export const VacanciesProvider = ({ children }) => {
     return favoritesIds.includes(id);
   }
 
+  const updateFilters = (filters) => {
+    dispatch(createAction(VACANCIES_ACTION_TYPES.SET_FILTERS, filters));
+  };
+
+  const updateQuery = (query) => {
+    dispatch(createAction(VACANCIES_ACTION_TYPES.SET_QUERY, query));
+  }
+
   const value = {
     vacancies,
     isLoading,
     favoritesIds,
+    filters,
     isFavorite,
     addFavorite,
     deleteFavorite,
+    updateFilters,
+    updateQuery,
   };
 
   return (

@@ -1,7 +1,7 @@
 import { NumberInput, rem } from "@mantine/core";
 import useStyles from "./inputWithArrows.styles";
 
-const InputWithArrows = ({ className, label, placeholder, classNames }) => {
+const InputWithArrows = ({ className, label, placeholder, classNames, ...otherProps }) => {
   const { classes } = useStyles();
 
   return (
@@ -11,6 +11,7 @@ const InputWithArrows = ({ className, label, placeholder, classNames }) => {
       min={0}
       step={100}
       rightSectionWidth={rem(34)}
+      {...otherProps}
       classNames={{
         ...classNames,
         rightSection: classes.rightSection,
