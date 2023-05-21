@@ -1,7 +1,6 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ActionIcon, Button, Flex, Group, Select, Stack, Text, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { VacanciesContext } from "../../contexts/vacancies.context";
 import Card from "../layout/card/card.component";
 
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';

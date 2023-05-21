@@ -27,7 +27,7 @@ const Favorites = () => {
     <Center>
       {
         favoritesIds.length
-          ? <VacanciesList vacancies={favorites} withSearch={false} isLoading={isLoading} />
+          ? <VacanciesList vacancies={favorites} isLoading={isLoading} />
           : <EmptyState mt={rem(120)} />
       }
     </Center>

@@ -10,6 +10,7 @@ export const fetchVacancies = async (params) => {
   const { data } = await instance.get(ENDPOINTS.VACANCIES, {
     params: {
       count: VACANCIES_PER_PAGE,
+      published: 1,
       ...params,
     }
   });
