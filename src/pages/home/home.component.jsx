@@ -5,6 +5,7 @@ import VacanciesList from "../../components/vacanciesList/vacanciesList.componen
 import { useContext } from "react";
 import { VacanciesContext } from "../../contexts/vacancies.context";
 import SearchBar from "../../components/searchBar/searchBar.component";
+import ListPagination from "../../components/listPagination/listPagination.component";
 
 import useStyles from "./home.styles";
 
@@ -21,6 +22,7 @@ const Home = () => {
           vacancies={vacancies}
           isLoading={isLoading}
         />
+        <ListPagination />
       </Stack>
     </Flex >
   );

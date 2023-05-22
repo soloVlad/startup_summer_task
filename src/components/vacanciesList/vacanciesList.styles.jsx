@@ -7,7 +7,7 @@ const useStyles = createStyles((theme) => ({
   },
   loader: {
     margin: theme.other.loaderMargin,
-  }
+  },
 }));
 
 export default useStyles
