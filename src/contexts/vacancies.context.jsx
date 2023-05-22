@@ -1,4 +1,4 @@
-import { createContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer } from "react";
 import { useSearchParams } from "react-router-dom";
 
 import { fetchCatalogues, fetchVacancies } from "../axios/requests";
@@ -11,6 +11,7 @@ import {
   getFavoritesFromLocalStorage,
   saveFavoritesToLocalStorage
 } from "../utils/utils";
+import { AuthContext } from "./auth.context";
 
 const VACANCIES_ACTION_TYPES = {
   SET_VACANCIES: 'SET_VACANCIES',
@@ -102,6 +103,7 @@ export const VacanciesContext = createContext({
 });
 
 export const VacanciesProvider = ({ children }) => {
+  const { token } = useContext(AuthContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
   const {
@@ -118,10 +120,13 @@ export const VacanciesProvider = ({ children }) => {
 
 
   const loadVacancies = async () => {
+    if (!token) return;
+
     setSearchParams({ ...convertSearchParamsToObject(searchParams), currentPage: currentPage + 1 });
 
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_IS_LOADING, true));
     const combinedParams = combineParams(params, currentPage);
+    console.log(combinedParams);
     const { objects: vacancies, total } = await fetchVacancies(combinedParams);
     const payload = { vacancies };
     const amountOfPages = calcAmountOfPages(total);
@@ -133,7 +138,7 @@ export const VacanciesProvider = ({ children }) => {
 
   useEffect(() => {
     loadVacancies();
-  }, [params, currentPage]);
+  }, [params, currentPage, token]);
 
   useEffect(() => {
     const savedFavorites = getFavoritesFromLocalStorage();

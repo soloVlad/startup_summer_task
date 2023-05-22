@@ -6,7 +6,7 @@ import { ReactComponent as StarIcon } from '../../assets/icons/star.svg';
 import useStyles from "./starButton.styles";
 import { VacanciesContext } from "../../contexts/vacancies.context";
 
-const StarButton = ({ vacancyId }) => {
+const StarButton = ({ vacancyId, ...otherProps }) => {
   const [isActive, setIsActive] = useState(false);
   const { isFavorite, addFavorite, deleteFavorite } = useContext(VacanciesContext);
   const { classes } = useStyles();
@@ -33,6 +33,7 @@ const StarButton = ({ vacancyId }) => {
       className={classes.wrapper}
       onClick={handleStarClick}
       size={rem(24)}
+      {...otherProps}
     >
       <StarIcon
         className={`${isActive ? classes.starActive : classes.star}`}

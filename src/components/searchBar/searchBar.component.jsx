@@ -26,6 +26,7 @@ const SearchBar = () => {
 
   return (
     <TextInput
+      data-elem='search-input'
       value={value}
       onChange={handleChange}
       onBlur={handleBlur}
@@ -36,7 +37,7 @@ const SearchBar = () => {
       }
       iconWidth={rem(12.6)}
       rightSection={
-        <Button className={classes.searchButton} onClick={handleSearch}>
+        <Button data-elem='search-button' className={classes.searchButton} onClick={handleSearch}>
           Поиск
         </Button>
       }

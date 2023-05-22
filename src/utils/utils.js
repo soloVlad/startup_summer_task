@@ -30,7 +30,5 @@ export const combineParams = (params, currentPage) => {
     combinedParams['no_agreement'] = 1;
   }
 
-  console.log(combinedParams);
-
   return combinedParams;
 };

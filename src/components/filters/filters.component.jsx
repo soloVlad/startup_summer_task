@@ -78,6 +78,7 @@ const Filters = ({ className }) => {
             </Flex>
 
             <Select
+              data-elem='industry-select'
               label='Отрасль'
               allowDeselect
               data={catalogues.map(item => item.title_trimmed)}
@@ -105,6 +106,7 @@ const Filters = ({ className }) => {
 
             <Stack spacing='sm'>
               <InputWithArrows
+                data-elem='salary-from-input'
                 label='Оклад'
                 placeholder='От'
                 classNames={{
@@ -114,6 +116,7 @@ const Filters = ({ className }) => {
                 {...form.getInputProps('payment_from')}
               />
               <InputWithArrows
+                data-elem='salary-to-input'
                 placeholder='До'
                 classNames={{
                   label: classes.label,
@@ -123,7 +126,7 @@ const Filters = ({ className }) => {
               />
             </Stack>
 
-            <Button type='submit' className={classes.submitButton}>Применить</Button>
+            <Button data-elem='search-button' type='submit' className={classes.submitButton}>Применить</Button>
           </Stack>
         </form>
       </Card >

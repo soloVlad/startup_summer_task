@@ -26,6 +26,7 @@ const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
 
   return (
     <Card
+      data-elem={!isInFullVacancy && `vacancy-${vacancy.id}`}
       onClick={handleCardClick}
       className={`${!isInFullVacancy && classes.cardLink}`}
     >
@@ -37,7 +38,7 @@ const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
           >
             {vacancy.profession}
           </Title>
-          <StarButton vacancyId={vacancy.id} />
+          <StarButton data-elem={`vacancy-${vacancy.id}-shortlist-button`} vacancyId={vacancy.id} />
         </Flex>
 
         <Flex gap='md' className={classes.infoWrapper}>
