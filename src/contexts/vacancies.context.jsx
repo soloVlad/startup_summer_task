@@ -1,8 +1,16 @@
 import { createContext, useEffect, useReducer } from "react";
-import { fetchCatalogues, fetchVacancies } from "../axios/requests";
-import { createAction } from "../utils/reducer/reducer.utils";
 import { useSearchParams } from "react-router-dom";
-import { PAGES_AMOUNT, VACANCIES_PER_PAGE } from "../constants/api";
+
+import { fetchCatalogues, fetchVacancies } from "../axios/requests";
+
+import { createAction } from "../utils/reducer/reducer.utils";
+import {
+  calcAmountOfPages,
+  combineParams,
+  convertSearchParamsToObject,
+  getFavoritesFromLocalStorage,
+  saveFavoritesToLocalStorage
+} from "../utils/utils";
 
 const VACANCIES_ACTION_TYPES = {
   SET_VACANCIES: 'SET_VACANCIES',
@@ -93,22 +101,6 @@ export const VacanciesContext = createContext({
   updateCurrentPage: () => { }
 });
 
-const getFavoritesFromLocalStorage = () => {
-  return JSON.parse(localStorage.getItem('favorites')) || [];
-};
-
-const saveFavoritesToLocalStorage = (favoritesIds) => {
-  localStorage.setItem('favorites', JSON.stringify(favoritesIds));
-};
-
-const convertSearchParamsToObject = (searchParams) => {
-  const paramsObj = {};
-  searchParams.forEach((value, key) => {
-    paramsObj[key] = value;
-  })
-  return paramsObj
-};
-
 export const VacanciesProvider = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, dispatch] = useReducer(vacanciesReducer, INITIAL_STATE);
@@ -129,13 +121,10 @@ export const VacanciesProvider = ({ children }) => {
     setSearchParams({ ...convertSearchParamsToObject(searchParams), currentPage: currentPage + 1 });
 
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_IS_LOADING, true));
-    
-    const { objects: vacancies, total } = await fetchVacancies({ ...params, page: currentPage });
+    const combinedParams = combineParams(params, currentPage);
+    const { objects: vacancies, total } = await fetchVacancies(combinedParams);
     const payload = { vacancies };
-    let amountOfPages = total / VACANCIES_PER_PAGE;
-    amountOfPages = amountOfPages > PAGES_AMOUNT ? PAGES_AMOUNT : amountOfPages;
-
-    console.log(pagesAmount);
+    const amountOfPages = calcAmountOfPages(total);
 
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_VACANCIES, payload));
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_PAGES_AMOUNT, amountOfPages));

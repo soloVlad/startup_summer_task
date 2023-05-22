@@ -7,7 +7,6 @@ import { VacanciesContext } from "../../contexts/vacancies.context";
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as SelectArrowIcon } from '../../assets/icons/selectArrow.svg';
 import InputWithArrows from "../layout/inputWithArrows/inputWithArrows.components";
-import { fetchCatalogues } from "../../axios/requests";
 
 import useStyles from "./filters.styles";
 
