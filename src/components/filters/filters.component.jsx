@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ActionIcon, Button, Flex, Group, Select, Stack, Text, rem } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import Card from "../layout/card/card.component";
+import { VacanciesContext } from "../../contexts/vacancies.context";
 
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as SelectArrowIcon } from '../../assets/icons/selectArrow.svg';
@@ -16,11 +17,11 @@ const findKeyByTitleTrimmed = (titleTrimmed, catalogues) => {
   return elem.key;
 };
 
-const Filters = ({ className, setFilters, handleSubmit }) => {
+const Filters = ({ className }) => {
   const { classes } = useStyles();
+  const { updateFilters, updateParams, catalogues } = useContext(VacanciesContext);
   const [isFiltersOpened, setIsFiltersOpened] = useState(false);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
-  const [catalogues, setCatalogues] = useState([]);
 
   const form = useForm({
     initialValues: {
@@ -40,7 +41,7 @@ const Filters = ({ className, setFilters, handleSubmit }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    handleSubmit();
+    updateParams();
   };
 
   const handleReset = () => {
@@ -52,17 +53,8 @@ const Filters = ({ className, setFilters, handleSubmit }) => {
       ...form.values,
       catalogues: findKeyByTitleTrimmed(form.values.catalogues, catalogues),
     };
-    setFilters(preparedFilters);
+    updateFilters(preparedFilters);
   }, [form.values]);
-
-  useEffect(() => {
-    const loadCatalogues = async () => {
-      const response = await fetchCatalogues();
-      setCatalogues(response);
-    };
-
-    loadCatalogues();
-  }, []);
 
   return (
     <>

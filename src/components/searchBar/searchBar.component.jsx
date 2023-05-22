@@ -1,17 +1,19 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { VacanciesContext } from "../../contexts/vacancies.context";
 import { Button, TextInput, rem } from "@mantine/core";
 
 import { ReactComponent as SearchIcon } from '../../assets/icons/search.svg';
 
 import { useStyles } from "./searchBar.styles";
 
-const SearchBar = ({ setQuery, handleSubmit }) => {
+const SearchBar = () => {
   const [value, setValue] = useState('');
+  const { updateQuery, updateParams } = useContext(VacanciesContext);
 
   const { classes } = useStyles();
 
   const handleSearch = () => {
-    handleSubmit();
+    updateParams();
   };
 
   const handleChange = (event) => {
@@ -19,9 +21,8 @@ const SearchBar = ({ setQuery, handleSubmit }) => {
   };
 
   const handleBlur = (event) => {
-    setQuery(event.target.value);
+    updateQuery(event.target.value);
   };
-
 
   return (
     <TextInput
