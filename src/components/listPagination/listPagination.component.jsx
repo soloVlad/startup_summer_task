@@ -17,7 +17,13 @@ const ListPagination = () => {
       onChange={handlePageChange}
       value={currentPage + 1}
       total={pagesAmount}
-      spacing='sm'
+      sx={(theme) => ({
+        gap: theme.spacing.sm,
+
+        [theme.fn.smallerThan('xs')]: {
+          gap: 0,
+        }
+      })}
       classNames={{
         control: classes.paginationControl,
       }}

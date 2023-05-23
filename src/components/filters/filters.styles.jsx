@@ -13,6 +13,7 @@ const useStyles = createStyles((theme) => ({
   },
   filtersOpened: {
     [theme.fn.smallerThan('sm')]: {
+      maxWidth: 'none',
       display: 'block',
     }
   },
