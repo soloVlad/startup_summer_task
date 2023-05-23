@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/startup_summer_task/static/css/main.c0afc286.css",
+    "main.js": "/startup_summer_task/static/js/main.00d98a80.js",
+    "static/js/787.b9e57e67.chunk.js": "/startup_summer_task/static/js/787.b9e57e67.chunk.js",
+    "static/media/guyWithSearch.svg": "/startup_summer_task/static/media/guyWithSearch.e971983585ef9132b066d5ec6b8321e4.svg",
+    "static/media/geo.svg": "/startup_summer_task/static/media/geo.f8ff386938b51a2897c396f654d24225.svg",
+    "static/media/star.svg": "/startup_summer_task/static/media/star.9f9a19f2b3a569d46f15ae8090a6557f.svg",
+    "index.html": "/startup_summer_task/index.html",
+    "static/media/logo.svg": "/startup_summer_task/static/media/logo.3951b7f587fb0209876f65b636a74c7d.svg",
+    "static/media/dot.svg": "/startup_summer_task/static/media/dot.c0670b418ef2a750cdc15abcc5c9a642.svg",
+    "static/media/search.svg": "/startup_summer_task/static/media/search.92f386efdbfcf7757e4254f1201f20a3.svg",
+    "static/media/close.svg": "/startup_summer_task/static/media/close.30b26b0b9e21fc9eb7b4a4eb01a36a17.svg",
+    "static/media/selectArrow.svg": "/startup_summer_task/static/media/selectArrow.000c3f7fa277feecbc407bf99a5f8054.svg",
+    "main.c0afc286.css.map": "/startup_summer_task/static/css/main.c0afc286.css.map",
+    "main.00d98a80.js.map": "/startup_summer_task/static/js/main.00d98a80.js.map",
+    "787.b9e57e67.chunk.js.map": "/startup_summer_task/static/js/787.b9e57e67.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c0afc286.css",
+    "static/js/main.00d98a80.js"
+  ]
+}
