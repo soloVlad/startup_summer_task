@@ -1,21 +1,22 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VacanciesContext } from "../../contexts/vacancies.context";
 import { Pagination } from "@mantine/core";
 
 import useStyles from "./listPagination.styles";
 
-const ListPagination = () => {
-  const { pagesAmount, currentPage, updateCurrentPage } = useContext(VacanciesContext);
+const ListPagination = ({ params, setParams, handleRequest }) => {
+  const { pagesAmount } = useContext(VacanciesContext);
   const { classes } = useStyles();
 
   const handlePageChange = (value) => {
-    updateCurrentPage(value - 1);
+    const preparedParams = { ...params, currentPage: +value };
+    handleRequest(preparedParams);
   }
 
   return (
     <Pagination
       onChange={handlePageChange}
-      value={currentPage + 1}
+      value={+params.currentPage}
       total={pagesAmount}
       sx={(theme) => ({
         gap: theme.spacing.sm,

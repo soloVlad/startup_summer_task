@@ -22,17 +22,18 @@ export const calcAmountOfPages = (total) => {
   return amountOfPages
 };
 
-export const combineParams = (params, currentPage) => {
-  const combinedParams = { ...params, page: currentPage };
-  const { payment_from, payment_to } = params;
-
-  if (payment_from || payment_to) {
-    combinedParams['no_agreement'] = 1;
-  }
-
-  return combinedParams;
-};
-
 export const isEmptyObject = (obj) => {
   return Object.keys(obj).length === 0;
+}
+
+export const removeFalsyParams = (paramsObj) => {
+  const filteredObj = {};
+  for (let param in paramsObj) {
+    if (typeof paramsObj[param] === 'object') {
+      const filteredProps = removeFalsyParams(paramsObj[param]);
+      filteredObj[param] = { ...filteredProps };
+    }
+    else if (paramsObj[param] || paramsObj[param] === 0) filteredObj[param] = paramsObj[param];
+  }
+  return filteredObj;
 }

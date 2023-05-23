@@ -4,6 +4,8 @@ import { useForm } from "@mantine/form";
 import Card from "../layout/card/card.component";
 import { VacanciesContext } from "../../contexts/vacancies.context";
 
+import { INITIAL_PARAMS } from "../../pages/home/home.component";
+
 import { ReactComponent as CloseIcon } from '../../assets/icons/close.svg';
 import { ReactComponent as SelectArrowIcon } from '../../assets/icons/selectArrow.svg';
 import InputWithArrows from "../layout/inputWithArrows/inputWithArrows.components";
@@ -23,18 +25,14 @@ const prepareParams = (formValues, catalogues) => {
   };
 };
 
-const Filters = ({ className }) => {
+const Filters = ({ params, setParams, handleRequest, className }) => {
   const { classes } = useStyles();
-  const { updateFilters, updateParams, catalogues } = useContext(VacanciesContext);
+  const { catalogues } = useContext(VacanciesContext);
   const [isFiltersOpened, setIsFiltersOpened] = useState(false);
   const [isDropdownOpened, setIsDropdownOpened] = useState(false);
 
   const form = useForm({
-    initialValues: {
-      catalogues: '',
-      payment_from: '',
-      payment_to: '',
-    }
+    initialValues: INITIAL_PARAMS.filters,
   });
 
   const changeDropdownState = () => {
@@ -47,16 +45,17 @@ const Filters = ({ className }) => {
 
   const onSubmit = (event) => {
     event.preventDefault();
-    updateParams();
+    handleRequest({ ...params, currentPage: INITIAL_PARAMS.currentPage });
   };
 
   const handleReset = () => {
     form.reset();
+    handleRequest({ ...params, filters: { ...INITIAL_PARAMS.filters }, currentPage: INITIAL_PARAMS.currentPage });
   };
 
   useEffect(() => {
     const preparedFilters = prepareParams(form.values, catalogues);
-    updateFilters(preparedFilters);
+    setParams({ ...params, filters: preparedFilters });
   }, [form.values]);
 
   return (
