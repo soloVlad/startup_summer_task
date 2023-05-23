@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/startup_summer_task/static/css/main.c0afc286.css",
-    "main.js": "/startup_summer_task/static/js/main.00d98a80.js",
+    "main.js": "/startup_summer_task/static/js/main.94a89dcc.js",
     "static/js/787.b9e57e67.chunk.js": "/startup_summer_task/static/js/787.b9e57e67.chunk.js",
     "static/media/guyWithSearch.svg": "/startup_summer_task/static/media/guyWithSearch.e971983585ef9132b066d5ec6b8321e4.svg",
     "static/media/geo.svg": "/startup_summer_task/static/media/geo.f8ff386938b51a2897c396f654d24225.svg",
@@ -13,11 +13,11 @@
     "static/media/close.svg": "/startup_summer_task/static/media/close.30b26b0b9e21fc9eb7b4a4eb01a36a17.svg",
     "static/media/selectArrow.svg": "/startup_summer_task/static/media/selectArrow.000c3f7fa277feecbc407bf99a5f8054.svg",
     "main.c0afc286.css.map": "/startup_summer_task/static/css/main.c0afc286.css.map",
-    "main.00d98a80.js.map": "/startup_summer_task/static/js/main.00d98a80.js.map",
+    "main.94a89dcc.js.map": "/startup_summer_task/static/js/main.94a89dcc.js.map",
     "787.b9e57e67.chunk.js.map": "/startup_summer_task/static/js/787.b9e57e67.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.c0afc286.css",
-    "static/js/main.00d98a80.js"
+    "static/js/main.94a89dcc.js"
   ]
 }
