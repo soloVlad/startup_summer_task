@@ -19,8 +19,9 @@ const Header = () => {
         </Flex>
         <Group className={classes.menu}>
           {
-            LINKS.map(link => (
+            LINKS.map((link, index) => (
               <Anchor
+                key={index}
                 component={Link}
                 to={link.URL}
                 className={`${classes.menuItem} ${link.URL === pathname ? classes.menuItemActive : ''}`}
