@@ -28,13 +28,9 @@ const useStyles = createStyles((theme) => ({
   geoWrapper: {
     alignItems: 'center',
   },
-  geoIconWrapper: {
+  geoIcon: {
     width: rem(20),
     height: rem(20),
-  },
-  geoIcon: {
-    width: rem(13.3),
-    height: rem(16.1),
   },
 
   professionInFull: {

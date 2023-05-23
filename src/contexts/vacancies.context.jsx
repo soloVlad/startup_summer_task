@@ -9,6 +9,7 @@ import {
   combineParams,
   convertSearchParamsToObject,
   getFavoritesFromLocalStorage,
+  isEmptyObject,
   saveFavoritesToLocalStorage
 } from "../utils/utils";
 import { AuthContext } from "./auth.context";
@@ -126,7 +127,6 @@ export const VacanciesProvider = ({ children }) => {
 
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_IS_LOADING, true));
     const combinedParams = combineParams(params, currentPage);
-    console.log(combinedParams);
     const { objects: vacancies, total } = await fetchVacancies(combinedParams);
     const payload = { vacancies };
     const amountOfPages = calcAmountOfPages(total);
@@ -184,11 +184,14 @@ export const VacanciesProvider = ({ children }) => {
     dispatch(createAction(VACANCIES_ACTION_TYPES.SET_QUERY, newQuery));
   };
 
-  const updateParams = () => {
+  const updateParams = (newParams = {}) => {
     const params = {
-      ...filters,
       keyword: query,
     };
+
+    const paramsToAdd = isEmptyObject(newParams) ? filters : newParams;
+    Object.assign(params, paramsToAdd);
+
     const preparedParams = {};
     for (let param in params) {
       if (params[param]) preparedParams[param] = params[param];

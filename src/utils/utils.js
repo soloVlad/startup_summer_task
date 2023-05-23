@@ -32,3 +32,7 @@ export const combineParams = (params, currentPage) => {
 
   return combinedParams;
 };
+
+export const isEmptyObject = (obj) => {
+  return Object.keys(obj).length === 0;
+}

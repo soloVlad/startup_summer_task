@@ -16,6 +16,13 @@ const findKeyByTitleTrimmed = (titleTrimmed, catalogues) => {
   return elem.key;
 };
 
+const prepareParams = (formValues, catalogues) => {
+  return {
+    ...formValues,
+    catalogues: findKeyByTitleTrimmed(formValues.catalogues, catalogues),
+  };
+};
+
 const Filters = ({ className }) => {
   const { classes } = useStyles();
   const { updateFilters, updateParams, catalogues } = useContext(VacanciesContext);
@@ -48,10 +55,7 @@ const Filters = ({ className }) => {
   };
 
   useEffect(() => {
-    const preparedFilters = {
-      ...form.values,
-      catalogues: findKeyByTitleTrimmed(form.values.catalogues, catalogues),
-    };
+    const preparedFilters = prepareParams(form.values, catalogues);
     updateFilters(preparedFilters);
   }, [form.values]);
 

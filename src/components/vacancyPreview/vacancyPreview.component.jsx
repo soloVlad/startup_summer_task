@@ -56,9 +56,7 @@ const VacancyPreview = ({ vacancy, isInFullVacancy }) => {
         </Flex>
 
         <Flex gap='sm' className={classes.geoWrapper}>
-          <Center className={classes.geoIconWrapper}>
-            <GeoIcon className={classes.geoIcon} />
-          </Center>
+          <GeoIcon className={classes.geoIcon} />
           <Title order={4}>{vacancy.town.title}</Title>
         </Flex>
       </Stack>
