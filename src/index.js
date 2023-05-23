@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 
 import { MantineProvider } from '@mantine/core';
 
@@ -13,7 +13,7 @@ import { AuthProvider } from './contexts/auth.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
+  <HashRouter>
     <AuthProvider>
       <VacanciesProvider>
         <MantineProvider
@@ -25,7 +25,7 @@ root.render(
         </MantineProvider>
       </VacanciesProvider>
     </AuthProvider>
-  </BrowserRouter>
+  </HashRouter>
 );
 
 // If you want to start measuring performance in your app, pass a function
