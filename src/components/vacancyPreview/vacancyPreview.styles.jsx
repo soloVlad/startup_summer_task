@@ -12,6 +12,11 @@ const useStyles = createStyles((theme) => ({
   },
   infoWrapper: {
     alignItems: 'center',
+
+    [theme.fn.smallerThan('xs')]: {
+      flexDirection: 'column',
+      alignItems: 'flex-start',
+    }
   },
   typeOfWork: {
     fontWeight: 400,
@@ -20,6 +25,10 @@ const useStyles = createStyles((theme) => ({
   },
   dotIconWrapper: {
     width: rem(9),
+
+    [theme.fn.smallerThan('xs')]: {
+      display: 'none',
+    }
   },
   dotIcon: {
     width: rem(5),

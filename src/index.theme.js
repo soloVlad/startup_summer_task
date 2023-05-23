@@ -2,6 +2,7 @@ import { rem } from "@mantine/core";
 
 const theme = {
   breakpoints: {
+    xs: 580,
     sm: 790,
   },
   defaultRadius: rem(8),
