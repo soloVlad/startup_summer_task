@@ -91,6 +91,9 @@ export const VacanciesProvider = ({ children }) => {
     const currentPage = +searchParams.get('currentPage') - 1;
     const preparedParams = { ...searchParamsObj, page: currentPage };
     const filteredParams = removeFalsyParams(preparedParams);
+    if (filteredParams.payment_from || filteredParams.payment_to) {
+      filteredParams['no_agreement'] = 1;
+    }
 
     const { objects: vacancies, total } = await fetchVacancies(filteredParams);
     const payload = { vacancies };

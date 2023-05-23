@@ -11,6 +11,7 @@ instance.interceptors.request.use((config) => {
 
   const token = JSON.parse(localStorage.getItem('token'))?.access_token;
   if (token) {
+    console.log(token);
     config.headers.Authorization = `Bearer ${token}`;
   }
 
